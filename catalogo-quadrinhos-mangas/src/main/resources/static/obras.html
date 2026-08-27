@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obras | Catálogo</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <header class="topbar compact">
+        <div>
+            <a class="back" href="/">← Início</a>
+            <h1>Catálogo de Obras</h1>
+            <p>Cadastre, pesquise, filtre, edite e exclua itens.</p>
+        </div>
+        <button class="btn btn-primary" onclick="abrirModal()">+ Nova obra</button>
+    </header>
+
+    <main class="container">
+        <section class="card filters">
+            <div class="field search-field">
+                <label for="busca">Pesquisar por título ou autor</label>
+                <input id="busca" type="search" placeholder="Ex.: One Piece, Oda...">
+            </div>
+            <div class="field">
+                <label for="generoFiltro">Gênero</label>
+                <select id="generoFiltro">
+                    <option value="">Todos</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="editoraFiltro">Editora</label>
+                <select id="editoraFiltro">
+                    <option value="">Todas</option>
+                </select>
+            </div>
+            <button class="btn btn-secondary" onclick="limparFiltros()">Limpar</button>
+        </section>
+
+        <section class="card table-card">
+            <div class="section-head">
+                <div>
+                    <h2>Minha coleção</h2>
+                    <span id="contador" class="muted">0 obras</span>
+                </div>
+            </div>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Capa</th>
+                            <th>Título</th>
+                            <th>Vol.</th>
+                            <th>Autor</th>
+                            <th>Gênero</th>
+                            <th>Editora</th>
+                            <th>Nota</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabelaObras"></tbody>
+                </table>
+            </div>
+            <div id="vazio" class="empty" hidden>Nenhuma obra encontrada.</div>
+        </section>
+    </main>
+
+    <div class="modal" id="modal">
+        <div class="modal-box">
+            <div class="modal-head">
+                <div><span class="eyebrow">COLEÇÃO</span>
+                    <h2 id="modalTitulo">Nova obra</h2>
+                </div>
+                <button class="close" onclick="fecharModal()">×</button>
+            </div>
+            <form id="obraForm">
+                <input type="hidden" id="obraId">
+                <div class="form-grid">
+                    <div class="field full"><label>Título</label><input id="titulo" required maxlength="180"></div>
+                    <div class="field"><label>Volume</label><input id="volume" type="number" min="1" required></div>
+                    <div class="field"><label>Autor</label><input id="autor" required maxlength="150"></div>
+                    <div class="field"><label>Gênero</label><select id="genero" required></select></div>
+                    <div class="field"><label>Editora</label><select id="editora" required></select></div>
+                    <div class="field"><label>Nota (0 a 10)</label><input id="nota" type="number" min="0" max="10"
+                            step="0.1" required></div>
+                    <div class="field"><label>Status</label><select id="status" required></select></div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="fecharModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar obra</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+    <script src="/js/obras.js"></script>
+</body>
+
+</html>
