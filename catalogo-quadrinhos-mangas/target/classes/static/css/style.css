@@ -386,6 +386,17 @@ td {
     transform: translateY(0);
 }
 
+.capa-obra {
+    width: 65px;
+    height: 90px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(23, 32, 51, .12);
+}
+
 @media (max-width: 850px) {
     .topbar {
         min-height: auto;
@@ -556,17 +567,12 @@ td:last-child {
 .table-wrap td img {
     width: 65px;
     height: 90px;
-
     object-fit: cover;
     object-position: center;
-
     display: block;
-
     border-radius: 8px;
     border: 1px solid var(--border);
-
-    box-shadow:
-        0 4px 12px rgba(23, 32, 51, .12);
+    box-shadow: 0 4px 12px rgba(23, 32, 51, .12);
 }
 
 /* Mantém todas as linhas organizadas */
@@ -657,10 +663,6 @@ td:last-child {
         box-shadow: -5px 0 10px rgba(23, 32, 51, .06);
     }
 
-    .table-wrap td img {
-        width: 60px;
-        height: 85px;
-    }
 }
 
 /* =========================================================
@@ -750,11 +752,6 @@ td:last-child {
     /* Tabela continua organizada no celular */
     table {
         min-width: 1050px;
-    }
-
-    .table-wrap td img {
-        width: 55px;
-        height: 78px;
     }
 
     .table-wrap tbody tr {
