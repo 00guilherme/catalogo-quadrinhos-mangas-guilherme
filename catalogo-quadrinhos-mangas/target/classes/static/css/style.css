@@ -387,8 +387,8 @@ td {
 }
 
 .capa-obra {
-    width: 65px;
-    height: 90px;
+    width: auto;
+    height: 300px;
     object-fit: cover;
     object-position: center;
     display: block;
