@@ -1,3 +1,4 @@
+/* Variáveis globais centralizam as cores, dimensões e sombras do tema. */
 :root {
     --bg: #f5f7fb;
     --card: #ffffff;
@@ -12,10 +13,12 @@
     --shadow: 0 12px 35px rgba(23, 32, 51, .08);
 }
 
+/* Reset mínimo para dimensionamento consistente entre navegadores. */
 * {
     box-sizing: border-box;
 }
 
+/* Base visual e tipográfica compartilhada pelas páginas. */
 body {
     margin: 0;
     font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -23,6 +26,7 @@ body {
     color: var(--text);
 }
 
+/* Faz controles nativos usarem a mesma família tipográfica da interface. */
 button,
 input,
 select {
@@ -34,6 +38,7 @@ a {
     -webkit-tap-highlight-color: transparent;
 }
 
+/* Cabeçalho principal; o gradiente cria contraste com o conteúdo claro. */
 .topbar {
     min-height: 210px;
     padding: 42px max(24px, calc((100% - 1180px) / 2));
@@ -45,6 +50,7 @@ a {
     gap: 24px;
 }
 
+/* Variante menor usada na página de gerenciamento. */
 .topbar.compact {
     min-height: 180px;
 }
@@ -67,12 +73,14 @@ a {
     color: #b9a7ff;
 }
 
+/* Limita a largura do conteúdo e cria espaçamento lateral responsivo. */
 .container {
     max-width: 1180px;
     margin: 0 auto;
     padding: 32px 24px 60px;
 }
 
+/* Grade de indicadores do dashboard. */
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -81,6 +89,7 @@ a {
     position: relative;
 }
 
+/* Aparência compartilhada por indicadores e painéis de conteúdo. */
 .stat-card,
 .card {
     background: var(--card);
@@ -117,6 +126,7 @@ a {
     font-size: 1.7rem;
 }
 
+/* Painel introdutório da página inicial. */
 .hero {
     margin-top: 24px;
     padding: 42px;
@@ -142,6 +152,7 @@ a {
     opacity: .9;
 }
 
+/* Base dos botões e variações semânticas abaixo. */
 .btn {
     border: 0;
     border-radius: 11px;
@@ -185,6 +196,7 @@ a {
     font-size: .9rem;
 }
 
+/* Organiza busca e filtros em uma única linha no desktop. */
 .filters {
     margin-bottom: 20px;
     padding: 20px;
@@ -194,6 +206,7 @@ a {
     align-items: end;
 }
 
+/* Estilos comuns dos campos do formulário e dos filtros. */
 .field label {
     display: block;
     font-size: .82rem;
@@ -218,6 +231,7 @@ a {
     box-shadow: 0 0 0 3px #ede9fe;
 }
 
+/* Painel que envolve título, tabela e estado vazio. */
 .table-card {
     padding: 22px;
 }
@@ -237,10 +251,12 @@ a {
     font-size: .9rem;
 }
 
+/* Permite rolagem horizontal quando a tabela excede a viewport. */
 .table-wrap {
     overflow-x: auto;
 }
 
+/* Mantém as colunas alinhadas e garante espaço mínimo para os dados. */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -277,6 +293,7 @@ td {
     font-size: .8rem;
 }
 
+/* Etiqueta visual para os estados do enum StatusColecao. */
 .badge {
     display: inline-flex;
     border-radius: 99px;
@@ -306,6 +323,7 @@ td {
     color: var(--muted);
 }
 
+/* Camada de fundo que oculta o modal até receber a classe open. */
 .modal {
     position: fixed;
     inset: 0;
@@ -320,6 +338,7 @@ td {
     display: grid;
 }
 
+/* Caixa rolável que contém o formulário de obra. */
 .modal-box {
     width: min(700px, 100%);
     max-height: 90vh;
@@ -351,6 +370,7 @@ td {
     font-size: 1.4rem;
 }
 
+/* Distribui campos em duas colunas no espaço disponível. */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -368,6 +388,7 @@ td {
     gap: 10px;
 }
 
+/* Notificação temporária posicionada fora do fluxo normal da página. */
 .toast {
     position: fixed;
     right: 22px;
@@ -386,6 +407,7 @@ td {
     transform: translateY(0);
 }
 
+/* Aparência de capas quando exibidas fora da tabela. */
 .capa-obra {
     width: auto;
     height: 300px;
@@ -397,6 +419,7 @@ td {
     box-shadow: 0 4px 12px rgba(23, 32, 51, .12);
 }
 
+/* Ajusta cabeçalho, indicadores e filtros para telas intermediárias. */
 @media (max-width: 850px) {
     .topbar {
         min-height: auto;
@@ -422,6 +445,7 @@ td {
     }
 }
 
+/* Empilha os componentes e preserva a legibilidade em celulares. */
 @media (max-width: 560px) {
     .container {
         padding: 20px 14px 40px;

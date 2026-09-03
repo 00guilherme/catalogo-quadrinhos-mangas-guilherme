@@ -7,16 +7,21 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
+// Repositório das obras com operações CRUD e consultas derivadas ou personalizadas.
 public interface ObraRepository extends JpaRepository<Obra, Long> {
 
+    // Busca um texto no título ou no autor, sem diferenciar maiúsculas e minúsculas.
     List<Obra> findByTituloContainingIgnoreCaseOrAutorContainingIgnoreCase(
             String titulo, String autor
     );
 
+    // Lista as obras pertencentes a um gênero específico.
     List<Obra> findByGeneroId(Long generoId);
 
+    // Lista as obras publicadas por uma editora específica.
     List<Obra> findByEditoraId(Long editoraId);
 
+    // Combina busca textual, filtros opcionais e ordenação para a tela do catálogo.
     @Query("""
         SELECT o FROM Obra o
         WHERE (:busca IS NULL OR :busca = ''

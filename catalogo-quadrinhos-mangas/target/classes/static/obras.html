@@ -1,7 +1,9 @@
 <!DOCTYPE html>
+<!-- Página de consulta e manutenção da coleção de obras. -->
 <html lang="pt-BR">
 
 <head>
+    <!-- Metadados necessários para exibição correta em desktop e celular. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Obras | Catálogo</title>
@@ -9,6 +11,7 @@
 </head>
 
 <body>
+    <!-- Cabeçalho com navegação de retorno e abertura do formulário. -->
     <header class="topbar compact">
         <div>
             <a class="back" href="/">← Início</a>
@@ -19,6 +22,7 @@
     </header>
 
     <main class="container">
+        <!-- Filtros são ligados aos eventos definidos em obras.js. -->
         <section class="card filters">
             <div class="field search-field">
                 <label for="busca">Pesquisar por título ou autor</label>
@@ -39,6 +43,7 @@
             <button class="btn btn-secondary" onclick="limparFiltros()">Limpar</button>
         </section>
 
+        <!-- Tabela preenchida dinamicamente com as obras retornadas pela API. -->
         <section class="card table-card">
             <div class="section-head">
                 <div>
@@ -68,6 +73,7 @@
         </section>
     </main>
 
+    <!-- Modal reutilizado para criar e editar uma obra. -->
     <div class="modal" id="modal">
         <div class="modal-box">
             <div class="modal-head">
@@ -96,7 +102,9 @@
         </div>
     </div>
 
+    <!-- Área para mensagens breves de sucesso ou erro. -->
     <div id="toast" class="toast"></div>
+    <!-- Script controla requisições, filtros, formulário e renderização. -->
     <script src="/js/obras.js"></script>
 </body>
 

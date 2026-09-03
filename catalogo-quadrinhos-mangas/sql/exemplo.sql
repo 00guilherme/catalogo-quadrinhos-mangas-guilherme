@@ -1,12 +1,15 @@
+-- Cria o banco somente se ele ainda não existir, usando suporte completo a UTF-8.
 CREATE DATABASE IF NOT EXISTS catalogo_quadrinhos
 CHARACTER SET utf8mb4
 COLLATE utf8mb4_unicode_ci;
 
+-- Seleciona o banco que receberá as tabelas geradas pelo Hibernate.
 USE catalogo_quadrinhos;
 
 -- O Spring Boot cria as tabelas automaticamente.
 -- Estes INSERTs são opcionais e servem apenas para ter dados iniciais.
 
+-- Dados iniciais opcionais usados para testar os filtros da aplicação.
 INSERT INTO genero (nome) VALUES
 ('Ação'),
 ('Romance'),

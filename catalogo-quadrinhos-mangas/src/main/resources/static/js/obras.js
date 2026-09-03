@@ -1,3 +1,4 @@
+// Controla a tela de obras: consulta a API, renderiza a tabela e envia alterações.
 // =========================================================
 // CONFIGURAÇÃO DA API
 // =========================================================
@@ -22,6 +23,7 @@ const $ = id => document.getElementById(id);
 
 async function request(url, options = {}) {
 
+    // Acrescenta JSON por padrão, preservando cabeçalhos fornecidos pelo chamador.
     const response = await fetch(url, {
 
         headers: {
@@ -146,6 +148,7 @@ function preencherSelect(
     primeiro = null
 ) {
 
+    // Reconstrói as opções para manter filtros e formulário sincronizados com a API.
     const select = $(id);
 
 
@@ -251,6 +254,7 @@ function renderizar() {
     // CRIA AS LINHAS
     // =====================================================
 
+    // Gera todas as linhas de uma vez para refletir o estado atual da consulta.
     tbody.innerHTML = obras
         .map(obra => {
 
@@ -442,6 +446,7 @@ function textoStatus(status) {
 
 function abrirModal(id = null) {
 
+    // O mesmo formulário serve para inclusão e edição; primeiro limpamos seu estado.
     $("obraForm").reset();
 
     $("obraId").value = "";
@@ -515,6 +520,7 @@ function fecharModal() {
 
 async function editar(id) {
 
+    // Mantém um ponto de entrada nomeado para os botões de edição da tabela.
     abrirModal(id);
 }
 
@@ -534,6 +540,7 @@ $("obraForm").addEventListener(
             $("obraId").value;
 
 
+        // Converte campos numéricos antes de enviar o JSON ao backend.
         const dados = {
 
             titulo:
@@ -638,6 +645,7 @@ async function excluir(id) {
     }
 
 
+    // Solicita confirmação antes de executar uma operação destrutiva.
     if (
         !confirm(
             `Excluir "${obra.titulo}"?`
@@ -681,6 +689,7 @@ async function excluir(id) {
 
 function limparFiltros() {
 
+    // Restaura os controles ao estado inicial e refaz a busca sem parâmetros.
     $("busca").value = "";
 
     $("generoFiltro").value = "";
@@ -699,6 +708,7 @@ function limparFiltros() {
 let timerBusca;
 
 
+// Aguarda 250 ms após a última tecla para evitar uma requisição por caractere.
 $("busca").addEventListener(
     "input",
     () => {
@@ -763,6 +773,7 @@ function mostrarToast(mensagem) {
         $("toast");
 
 
+    // textContent impede que mensagens de erro sejam interpretadas como HTML.
     toast.textContent =
         mensagem;
 
@@ -788,6 +799,7 @@ function mostrarToast(mensagem) {
 
 function escapeHtml(valor) {
 
+    // Escapa valores vindos do banco antes de inseri-los em templates HTML.
     return String(
         valor ?? ""
     )

@@ -12,10 +12,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
+// Coordena as regras de negócio, relacionamentos e persistência das obras.
 public class ObraService {
 
+        // Serviço que consulta a capa da obra em uma API externa.
     private final ImagemObraService imagemObraService;
+        // Repositório principal das obras.
     private final ObraRepository obraRepository;
+        // Repositórios usados para validar os relacionamentos recebidos no DTO.
     private final GeneroRepository generoRepository;
     private final EditoraRepository editoraRepository;
 
@@ -25,6 +29,7 @@ public class ObraService {
             GeneroRepository generoRepository,
             EditoraRepository editoraRepository) {
 
+                // Dependências injetadas pelo Spring para manter o serviço testável.
         this.imagemObraService = imagemObraService;
         this.obraRepository = obraRepository;
         this.generoRepository = generoRepository;

@@ -6,11 +6,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
+// Consulta a Open Library para localizar automaticamente a capa de uma obra.
 public class ImagemObraService {
 
+    // Cliente HTTP usado para chamar a API externa.
     private final RestTemplate restTemplate;
+    // Conversor que transforma o JSON recebido em uma árvore navegável.
     private final ObjectMapper objectMapper;
 
+    // Cria as dependências simples utilizadas pela consulta externa.
     public ImagemObraService() {
         this.restTemplate = new RestTemplate();
         this.objectMapper = new ObjectMapper();
@@ -19,6 +23,7 @@ public class ImagemObraService {
     public String buscarImagem(String titulo) {
 
         try {
+            // A API recebe o título na query string, por isso os espaços são codificados.
 
             // Remove espaços desnecessários do título
             String tituloFormatado = titulo.trim().replace(" ", "%20");
@@ -64,6 +69,7 @@ public class ImagemObraService {
 
         } catch (Exception e) {
 
+            // A falha externa não impede o cadastro; a obra apenas fica sem capa.
             System.out.println(
                     "Erro ao buscar imagem da obra: "
                             + e.getMessage());
